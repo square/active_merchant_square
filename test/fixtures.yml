@@ -1,0 +1,19 @@
+# This file has all of the ActiveMerchant test account credentials.
+# Many gateways do not offer publicly available test accounts. In
+# order to make testing the gateways easy you can copy this file to
+# your home directory as the file ~/.active_merchant/fixtures.yml
+# You can then place your own test account credentials in your local
+# copy of the file.
+#
+# If the login is numeric, ensure that you place quotes around it.
+# Leading zeros will be lost when YAML parses the file if you don't.
+#
+# Paste any required PEM certificates after the pem key.
+#
+
+# Square Anonymous Sandbox https://medium.com/square-corner-blog/anonymous-sandbox-789459c92380
+square:
+  login: sandbox-sq0idp-7kuEoa7gxJLWQkjaQenZ7g
+  password: sqdemo-CiVzYW5kYm94LXNxMGF0Yi12ZzNfbEZVTjUxbWRsZWZTUGpEVmxBEhtDQkFTRUVTcFNSYmtLNDd4X3lqRTllUmtacmM=
+  location_id: CBASEJJZMYbNZW8F1bbRjRuPQ7Q
+  test: true # Square calls test mode "sandbox".
