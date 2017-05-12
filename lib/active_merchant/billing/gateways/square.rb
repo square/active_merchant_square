@@ -177,9 +177,6 @@ module ActiveMerchant #:nodoc:
       def store(card_nonce, options = {})
         raise ArgumentError('card_nonce required') if card_nonce.nil?
         raise ArgumentError.new('card_nonce nil but is a required field.') if card_nonce.nil?
-        if options[:billing_address].nil? || options[:billing_address][:zip].nil?
-          raise ArgumentError.new('options[:billing_address][:zip] nil but is a required field.')
-        end
 
         MultiResponse.run do |r|
           if !(options[:customer_id])
@@ -187,7 +184,9 @@ module ActiveMerchant #:nodoc:
             options[:customer_id] = r.responses.last.params['customer']['id']
           end
           post = options.slice(:cardholder_name, :billing_address)
-          post[:billing_address][:postal_code] = options[:billing_address][:zip]
+          if post[:billing_address].present?
+            post[:billing_address][:postal_code] = post[:billing_address].delete(:zip)
+          end
           post[:card_nonce] = card_nonce
           r.process { commit(:post, "customers/#{CGI.escape(options[:customer_id])}/cards", post) }
         end
