@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Francisco Rojas"]
   spec.email         = ["frojas@squareup.com"]
 
-  spec.summary       = %q{Framework and tools for dealing with credit card transactions using Square.}
-  spec.description   = %q{Active Merchant Square is a Square implementation of the payment abstraction library active_merchant.}
+  spec.summary       = %q{Active Merchant Square is a Square enhancement of the payment abstraction library active_merchant to  support for Square's e-commerce API.}
+  spec.description   = %q{Use this gem instead of ActiveMerchant gem if you want to use Square's e-commerce APIs (https://squareup.com/developers) with ActiveMerchant. The official ActiveMerchant gem does not support Square because Square shields raw credit card numbers from developers to make PCI compliance easier. This has all ActiveMerchant functionality, plus support of Square's card nonces in the iframe API.}
   spec.homepage      = "https://github.com/square/active_merchant_square"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
