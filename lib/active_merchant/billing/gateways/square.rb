@@ -40,7 +40,7 @@ module ActiveMerchant #:nodoc:
       # The `test` indicates if these credentials are for sandbox or
       #   production (money moving) access
       def initialize(options={})
-        requires!(options, :login, :password, :location_id, :test)
+        requires!(options, :login, :password, :location_id)
         @client_id = options[:login].strip
         @bearer_token = options[:password].strip
         @location_id = options[:location_id].strip
