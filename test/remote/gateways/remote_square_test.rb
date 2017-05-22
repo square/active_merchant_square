@@ -23,7 +23,7 @@ class RemoteSquareTest < Test::Unit::TestCase
   end
 
   def test_only_accepts_card_nonce_not_creditcard_pan
-    credit_card_pan = '4111111111111111' # should be rejected
+    credit_card_pan = '4111111111111111'
     response = @gateway.purchase(@amount, credit_card_pan, @options)
     assert_failure response
     assert_not_nil err = response.params['errors'].first
@@ -42,7 +42,7 @@ class RemoteSquareTest < Test::Unit::TestCase
 
   def test_successful_purchase_with_more_options
     options = {
-      :idemepotency_key => SecureRandom.uuid,
+      :idempotency_key => SecureRandom.uuid,
       :shipping_address => address,
       :billing_address => address,
       :buyer_email_address => "joe@example.com",
@@ -142,7 +142,7 @@ class RemoteSquareTest < Test::Unit::TestCase
     purchase = @gateway.purchase(@amount, @credit_card, @options)
     assert_success purchase
     tender_id = purchase.params['transaction']['tenders'].first['id']
-    options = {:tender_id => tender_id, :reason => 'oops!', :idemepotency_key => 'abc12'}
+    options = {:tender_id => tender_id, :reason => 'oops!', :idempotency_key => 'abc12'}
 
     assert refund = @gateway.refund(@amount, purchase.authorization, options)
     assert_success refund
@@ -158,7 +158,7 @@ class RemoteSquareTest < Test::Unit::TestCase
     purchase = @gateway.purchase(@amount, @credit_card, @options)
     assert_success purchase
     tender_id = purchase.params['transaction']['tenders'].first['id']
-    options = {:tender_id => tender_id, :reason => 'oops!', :idemepotency_key => 'abc12'}
+    options = {:tender_id => tender_id, :reason => 'oops!', :idempotency_key => 'abc12'}
 
     assert refund = @gateway.refund(@amount-1, purchase.authorization, options)
     assert_success refund

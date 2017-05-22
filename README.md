@@ -23,9 +23,11 @@ This simple example demonstrates how a purchase can be made after getting [a car
 ```ruby
 require 'active_merchant_square'
 
+# Get your login and password by going to: https://connect.squareup.com/apps
 credentials = {
   login: 'sandbox-sq0idp-APPLICATION_ID',
   password: 'sandbox-sq0atb-APPLICATION_SECRET',
+  # How to get your location ID, see: https://docs.connect.squareup.com/articles/faq-lookup-my-location-id
   location_id: 'LOCATION_ID',
 }
 
