@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active_merchant_square (0.1.0)
+    active_merchant_square (1.0.0)
       activemerchant (~> 1.66)
 
 GEM
