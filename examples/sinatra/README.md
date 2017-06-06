@@ -1,7 +1,7 @@
 # Payment processing using ActiveMerchantSquare
 
 This sample demonstrates processing card payments with Square Connect API, using the
-Active Merchant Square. Take a quick look at [Square APIs: Getting Started](https://docs.connect.squareup.com/articles/getting-started)
+Active Merchant Square gem. Take a quick look at [Square APIs: Getting Started](https://docs.connect.squareup.com/articles/getting-started)
 
 ## Requirements
 
@@ -14,6 +14,7 @@ Make sure you have Ruby > 1.9, and Bundler  ~> 1.
 
     SQUARE_APPLICATION_ID=your-app-id
     SQUARE_ACCESS_TOKEN=your-access-token
+    SQUARE_LOCATION_ID=your-location-id
 
 * `bundle exec ruby -S rackup`
 * The application runs in `http://localhost:9292/`
