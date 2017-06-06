@@ -45,3 +45,7 @@ end
 ```
 
 For more in-depth documentation and tutorials, see [Square Documentation site](https://docs.connect.squareup.com/)
+
+## Simple Web Example
+
+You can take a look at our example application using `gem 'sinatra'` and `gem 'square_active_merchant'` [here](./examples/sinatra).
