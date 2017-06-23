@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+gem 'rack-cache'
+gem 'sprockets'
+gem 'sprockets-helpers'
+gem 'sinatra'
+gem 'thin'
+gem 'sass'
+gem 'dotenv'
+gem 'active_merchant_square'
