@@ -85,6 +85,7 @@ module ActiveMerchant #:nodoc:
         add_address(post, options)
         post[:reference_id] = options[:order_id] if options[:order_id]
         post[:note] = options[:description] if options[:description]
+        post[:buyer_email_address] = options[:email] if options[:email]
 
         MultiResponse.run do |r|
           if options[:customer] && card_nonce
@@ -357,7 +358,7 @@ module ActiveMerchant #:nodoc:
           raw_response = ssl_request(
             method, self.live_url + endpoint, json_payload, headers)
           response = JSON.parse(raw_response)
-        rescue ResponseError => e
+        rescue ActiveUtils::ResponseError => e
           raw_response = e.response.body
           response = response_error(raw_response)
         rescue JSON::ParserError
