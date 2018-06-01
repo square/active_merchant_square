@@ -358,7 +358,7 @@ module ActiveMerchant #:nodoc:
           raw_response = ssl_request(
             method, self.live_url + endpoint, json_payload, headers)
           response = JSON.parse(raw_response)
-        rescue ResponseError => e
+        rescue ActiveUtils::ResponseError => e
           raw_response = e.response.body
           response = response_error(raw_response)
         rescue JSON::ParserError
