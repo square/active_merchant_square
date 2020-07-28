@@ -2,9 +2,8 @@ module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     class SquareGateway < Gateway
 
-
-      # test uses a 'sandbox' access token, same URL
       self.live_url = 'https://connect.squareup.com/v2/'
+      self.test_url = 'https://connect.squareupsandbox.com/v2/'
 
       self.money_format = :cents
       self.supported_countries = ['US', 'CA', 'JP', 'GB', 'AU']
@@ -44,7 +43,6 @@ module ActiveMerchant #:nodoc:
         @client_id = options[:login].strip
         @bearer_token = options[:password].strip
         @location_id = options[:location_id].strip
-
         super
       end
 
@@ -352,10 +350,13 @@ module ActiveMerchant #:nodoc:
       end
 
       def api_request(method, endpoint, parameters)
+
+        url = test? ? self.test_url : self.live_url
+
         json_payload = JSON.generate(parameters) if parameters
         begin
           raw_response = ssl_request(
-            method, self.live_url + endpoint, json_payload, headers)
+            method, url + endpoint, json_payload, headers)
           response = JSON.parse(raw_response)
         rescue ResponseError => e
           raw_response = e.response.body
